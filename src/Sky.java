@@ -23,7 +23,7 @@ public class Sky {
         starR = new int[count];
         starPhase = new int[count];
 
-        Random rnd = new Random(42);
+        Random rnd = new Random();
         for (int i = 0; i < count; i++) {
             starX[i] = rnd.nextInt(Math.max(1, width));
             starY[i] = rnd.nextInt(Math.max(1, (int) (height * 0.55)));
@@ -32,7 +32,7 @@ public class Sky {
         }
     }
 
-    public void draw(Graphics2D g, final int width, final int height) {
+    public void draw(Graphics2D g, final int width, final int height, int ticks) {
         GradientPaint skyGradient = new GradientPaint(
                 0, 0, new Color(8, 14, 22),
                 0, (float) (height * 0.6), new Color(18, 32, 28)
@@ -41,8 +41,8 @@ public class Sky {
         g.fillRect(0, 0, width, height);
 
         for (int i = 0; i < count; i++) {
-            double twinkle = 0.6 + 0.4 * Math.sin((System.currentTimeMillis() / 900.0) + starPhase[i]);
-            int alpha = (int) (150 * twinkle);
+            double star_time = 0.6 + 0.4 * Math.sin(ticks * 0.15 + starPhase[i]);
+            int alpha = (int) (150 * star_time);
             g.setColor(new Color(220, 240, 255, Math.max(0, Math.min(255, alpha))));
             g.fillOval(starX[i], starY[i], starR[i], starR[i]);
         }

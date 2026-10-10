@@ -26,7 +26,7 @@ public class Campfire {
 
     public boolean contains(int px, int py) {
         int cx = x;
-        int cy = y - 12;
+        int cy = y;
         int dx = px - cx;
         int dy = py - cy;
         return dx * dx + dy * dy <= CLICK_RADIUS * CLICK_RADIUS;

@@ -75,7 +75,7 @@ public class DrawPanel extends JPanel implements ActionListener {
         int w = getWidth();
         int h = getHeight();
 
-        sky.draw(g, w, h);
+        sky.draw(g, w, h, ticksFromStart);
         forest.drawFarLayer(g);
         forest.drawMidLayer(g);
 

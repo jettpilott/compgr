@@ -52,32 +52,16 @@ public class Tree {
             int leftX = baseX - tierW / 2;
             int rightX = baseX + tierW / 2;
 
-            g.setColor(darken(foliage, i));
+            g.setColor(dark(foliage, i));
             Polygon tier = new Polygon();
             tier.addPoint(baseX, tierTopY);
             tier.addPoint(leftX, tierBottomY);
             tier.addPoint(rightX, tierBottomY);
             g.fillPolygon(tier);
-
-            if (i <= 1) {
-                g.setColor(lighten(foliage, 22));
-                Polygon lit = new Polygon();
-                lit.addPoint(baseX, tierTopY);
-                lit.addPoint(baseX - tierW / 6, tierTopY + tierHeight / 2);
-                lit.addPoint(baseX + tierW / 6, tierTopY + tierHeight / 2);
-                g.fillPolygon(lit);
-            }
         }
-
-        g.setColor(lighten(foliage, 15));
-        Polygon tip = new Polygon();
-        tip.addPoint(baseX, topY - 6);
-        tip.addPoint(baseX - 3, topY + 4);
-        tip.addPoint(baseX + 3, topY + 4);
-        g.fillPolygon(tip);
     }
 
-    private Color darken(Color c, int amount) {
+    private Color dark(Color c, int amount) {
         return new Color(
                 Math.max(0, c.getRed() - amount * 4),
                 Math.max(0, c.getGreen() - amount * 4),
@@ -85,11 +69,4 @@ public class Tree {
                 c.getAlpha());
     }
 
-    private Color lighten(Color c, int amount) {
-        return new Color(
-                Math.min(255, c.getRed() + amount),
-                Math.min(255, c.getGreen() + amount),
-                Math.min(255, c.getBlue() + amount),
-                c.getAlpha());
-    }
 }

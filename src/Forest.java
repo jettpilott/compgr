@@ -18,7 +18,7 @@ public class Forest {
         midLayer.clear();
         nearLayer.clear();
 
-        Random rnd = new Random(7);
+        Random rnd = new Random(5);
         int horizon = (int) (height * 0.72);
 
         int farCount  = Math.max(20, width / 40);
